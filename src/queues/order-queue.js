@@ -19,10 +19,18 @@ ordersQueue.process(ordersProcess)
 
 const createNewOrder = (order) => {
     ordersQueue.add(order, {
-        // leave empty opts for now
+        // NOTE: Highest priority is 1, and lower the larger integer you use.
+        priority: getJobPriority(order),
+        attempts: 2,
     })
 }
 
+const getJobPriority = (order) => {
+    if (!order.price) return 3
+    return (order > 100) ? 1 : 2
+}
+
 module.exports = {
-    createNewOrder
+    createNewOrder,
+    ordersQueue
 }

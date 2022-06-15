@@ -3,6 +3,7 @@
     "start": "nodemon src/index.js"
   },
   "dependencies": {
+    "@bull-board/api": "^4.0.0",
     "@bull-board/koa": "^4.0.0",
     "@koa/router": "^10.1.1",
     "bull": "^4.8.3",
