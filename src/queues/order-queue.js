@@ -15,10 +15,10 @@ const ordersQueue = new Queue('orders', {
     }
 })
 
-ordersQueue.process(ordersProcess)
+ordersQueue.process("send", ordersProcess)
 
 const createNewOrder = (order) => {
-    ordersQueue.add(order, {
+    ordersQueue.add("send", order, {
         // NOTE: Highest priority is 1, and lower the larger integer you use.
         priority: getJobPriority(order),
         attempts: 2,
